@@ -38,6 +38,7 @@ export default function Navbar() {
     <>
       {session?.user ? (
         <>
+        Name
           <span>Welcome, {session.user.name}</span>
           <Button onClick={() => signOut()}>Sign Out</Button>
         </>
