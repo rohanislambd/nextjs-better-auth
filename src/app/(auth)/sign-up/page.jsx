@@ -12,7 +12,7 @@ import {
   Label,
   TextField,
 } from "@heroui/react";
-import { signUp } from "@/lib/auth-client";
+import { signIn } from "@/lib/auth-client";
 
 const SignUpPage =  () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -31,6 +31,13 @@ const SignUpPage =  () => {
     })
   console.log(resData, error);
   };
+
+  const hangleGoogleSignIn = async () =>{
+    const resData = await signIn.social({
+      provider: 'google'
+    })
+    console.log('after google sign in', resData);
+  }
   return (
     <div>
       <h2>Please Sign Up</h2>
@@ -82,7 +89,7 @@ const SignUpPage =  () => {
             }
             return null;
           }}
-       className="w-full max-w-[280px]" name="password">
+       className="w-full max-w-[280px]">
       <Label>Password</Label>
       <InputGroup>
         <InputGroup.Input
@@ -123,6 +130,9 @@ const SignUpPage =  () => {
           </Button>
         </div>
       </Form>
+
+      <p>OR</p>
+      <Button onClick={hangleGoogleSignIn} >Sign In Google</Button>
     </div>
   );
 };
