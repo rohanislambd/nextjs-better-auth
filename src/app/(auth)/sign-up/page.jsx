@@ -1,17 +1,22 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
+import {Eye, EyeSlash} from "@gravity-ui/icons";
+
 import {
   Button,
   Description,
   FieldError,
   Form,
   Input,
+  InputGroup,
   Label,
   TextField,
 } from "@heroui/react";
 import { signUp } from "@/lib/auth-client";
 
 const SignUpPage =  () => {
+    const [isVisible, setIsVisible] = useState(false);
+
   const onSubmit =async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -59,8 +64,9 @@ const SignUpPage =  () => {
           <Input placeholder="Your Email" />
           <FieldError />
         </TextField>
-        <TextField
-          isRequired
+
+       <TextField 
+        isRequired
           minLength={8}
           name="password"
           type="password"
@@ -76,14 +82,37 @@ const SignUpPage =  () => {
             }
             return null;
           }}
-        >
-          <Label>Password</Label>
-          <Input placeholder="Enter your password" />
-          <Description>
+       className="w-full max-w-[280px]" name="password">
+      <Label>Password</Label>
+      <InputGroup>
+        <InputGroup.Input
+          className="w-full max-w-[280px]"
+          type={isVisible ? "text" : "password"}
+          
+        />
+        <InputGroup.Suffix className="pe-0">
+          <Button
+            isIconOnly
+            aria-label={isVisible ? "Hide password" : "Show password"}
+            size="sm"
+            variant="ghost"
+            onPress={() => setIsVisible(!isVisible)}
+          >
+            {isVisible ? <Eye className="size-4" /> : <EyeSlash className="size-4" />}
+          </Button>
+        </InputGroup.Suffix>
+      </InputGroup>
+      <Description>
             Must be at least 8 characters with 1 uppercase and 1 number
           </Description>
           <FieldError />
-        </TextField>
+    </TextField>
+
+
+        
+
+
+
         <div className="flex gap-2">
           <Button type="submit">
             {/* <Check /> */}
