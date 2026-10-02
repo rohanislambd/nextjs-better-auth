@@ -12,7 +12,7 @@ import {
   Label,
   TextField,
 } from "@heroui/react";
-import { signIn } from "@/lib/auth-client";
+import { signIn ,  signUp} from "@/lib/auth-client";
 
 const SignUpPage =  () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -138,10 +138,10 @@ const SignUpPage =  () => {
         </div>
       </Form>
 
-      <p>OR</p>
+      {/* <p>OR</p>
       <Button onClick={hangleGoogleSignIn} >Sign In Google</Button>
       <p>OR</p>
-      <Button onClick={handleGithubSignIn}>Sign In Github</Button>
+      <Button onClick={handleGithubSignIn}>Sign In Github</Button> */}
     </div> 
   );
 };

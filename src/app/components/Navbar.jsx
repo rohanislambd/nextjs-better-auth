@@ -28,9 +28,10 @@ export default function Navbar() {
           Dashboard
         </Link>
       </li>
-      {session?.user && <li>
-        <Link href="/profile">Profile</Link>
-      </li>}
+      {session?.user && <>
+      <li><Link href="/profile">Profile</Link></li>
+      <li><Link href="/settings">Setting</Link></li>
+      </>}
     </>
   );
 
