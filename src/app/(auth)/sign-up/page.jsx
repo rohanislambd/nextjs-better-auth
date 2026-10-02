@@ -29,7 +29,7 @@ const SignUpPage =  () => {
       email: data.email,
       password: data.password
     })
-  console.log(resData, error);
+  console.log('after sign up', resData, error);
   };
 
   const hangleGoogleSignIn = async () =>{
@@ -138,10 +138,10 @@ const SignUpPage =  () => {
         </div>
       </Form>
 
-      {/* <p>OR</p>
+      <p>OR</p>
       <Button onClick={hangleGoogleSignIn} >Sign In Google</Button>
       <p>OR</p>
-      <Button onClick={handleGithubSignIn}>Sign In Github</Button> */}
+      <Button onClick={handleGithubSignIn}>Sign In Github</Button>
     </div> 
   );
 };
