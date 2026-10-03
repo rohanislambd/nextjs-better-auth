@@ -12,11 +12,11 @@ import {
   TextField,
 } from "@heroui/react";
 import { object } from "better-auth";
+import Link from "next/link";
 import { useState } from "react";
 
 const SingInPage = () => {
-    const [isVisible, setIsVisible] = useState(false);
-
+  const [isVisible, setIsVisible] = useState(false);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -52,12 +52,12 @@ const SingInPage = () => {
           <FieldError />
         </TextField>
 
-        <TextField 
-        className="w-full max-w-[280px]" 
-        isRequired
-         minLength={8}
-        name="password"
-        validate={(value) => {
+        <TextField
+          className="w-full max-w-[280px]"
+          isRequired
+          minLength={8}
+          name="password"
+          validate={(value) => {
             if (value.length < 8) {
               return "Password must be at least 8 characters";
             }
@@ -71,13 +71,13 @@ const SingInPage = () => {
           }}
         >
           <Label>Password</Label>
-          
+
           <InputGroup>
             <InputGroup.Input
               className="w-full max-w-[280px]"
               type={isVisible ? "text" : "password"}
             />
-            
+
             <InputGroup.Suffix className="pe-0">
               <Button
                 isIconOnly
@@ -86,8 +86,6 @@ const SingInPage = () => {
                 variant="ghost"
                 onPress={() => setIsVisible(!isVisible)}
               >
-
-                
                 {isVisible ? (
                   <Eye className="size-4" />
                 ) : (
@@ -96,12 +94,12 @@ const SingInPage = () => {
               </Button>
             </InputGroup.Suffix>
           </InputGroup>
-           <Description>
+          <Description>
             Must be at least 8 characters with 1 uppercase and 1 number
           </Description>
           <FieldError />
         </TextField>
-       
+
         <div className="flex gap-2">
           <Button type="submit">
             {/* <Check /> */}
@@ -112,6 +110,13 @@ const SingInPage = () => {
           </Button>
         </div>
       </Form>
+      <p>
+        <small>
+          Forgot Password? <Link 
+            className="text-blue-600 underline"
+          href="/forgot-password">Click here</Link>
+        </small>
+      </p>
     </div>
   );
 };
